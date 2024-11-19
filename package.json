@@ -1,4 +1,5 @@
 {
+  "homepage": "https://piyush31508.github.io/Flavour-Express",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -19,6 +20,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "analyze": "npm run build -- --report",
+    "format": "npx prettier --write src/**/*.{js,jsx,ts,tsx}",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -43,6 +48,7 @@
     ]
   },
   "devDependencies": {
+    "gh-pages": "^6.2.0",
     "tailwindcss": "^3.4.15"
   }
 }
