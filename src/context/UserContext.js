@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
             const { data } = await axios.post(`${server}/user/login`, { email });
             toast.success("OTP Sent Successfully!");
             localStorage.setItem("verifyToken", data.verifyToken);
-            navigate('/verify');
+            navigate('/Flavour-Express/verify');
             setBtnLoading(false);
         } catch (error) {
             console.log(error);
