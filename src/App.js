@@ -17,13 +17,13 @@ function App() {
       <BrowserRouter>
         <Header cartItems={cart.length}/>
         <Routes>
-          <Route path="/" element={<Home addToCart={addToCart} cart={cart} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/verify" element={<Verify />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/edit" element={<ProductEditForm />} />
-          <Route path="/add" element={<ProductAdd />} />
+          <Route path="/Flavour-Express" element={<Home addToCart={addToCart} cart={cart} />} />
+          <Route path="/Flavour-Express/login" element={<Login />} />
+          <Route path="/Flavour-Express/verify" element={<Verify />} />
+          <Route path="/Flavour-Express/cart" element={<Cart />} />
+          <Route path="/Flavour-Express/dashboard" element={<Dashboard />} />
+          <Route path="/Flavour-Express/edit" element={<ProductEditForm />} />
+          <Route path="/Flavour-Express/add" element={<ProductAdd />} />
         </Routes>
         <Footer />
       </BrowserRouter>

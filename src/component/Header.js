@@ -20,7 +20,7 @@ const Header = ({ cartItems }) => {
       <div className="mx-auto container px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link to="/" className="hover:text-gray-300 transition duration-300">
+          <Link to="/Flavour-Express/" className="hover:text-gray-300 transition duration-300">
             FlavourExpress
           </Link>
         </div>
@@ -28,13 +28,13 @@ const Header = ({ cartItems }) => {
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-8">
           <Link
-            to="/"
+            to="/Flavour-Express"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Home
           </Link>
           <Link
-            to="/cart"
+            to="/Flavour-Express/cart"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Cart
@@ -49,7 +49,7 @@ const Header = ({ cartItems }) => {
 
           {data &&
             <Link
-              to="/dashboard"
+              to="/Flavour-Express/dashboard"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Dashboard
@@ -59,7 +59,7 @@ const Header = ({ cartItems }) => {
 
           { !isAuth ? (
             <Link
-              to="/login"
+              to="/Flavour-Express/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign In
@@ -67,7 +67,7 @@ const Header = ({ cartItems }) => {
           ) : (
             <Link
               onClick={handleSignOut}
-              to="/login"
+              to="/Flavour-Express/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign Out
@@ -91,28 +91,28 @@ const Header = ({ cartItems }) => {
           } md:hidden bg-gray-800 text-white px-4 py-2`}
       >
         <Link
-          to="/home"
+          to="/Flavour-Express/"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
           Home
         </Link>
         <Link
-          to="/about"
+          to="/Flavour-Express/about"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
           About
         </Link>
         <Link
-          to="/services"
+          to="/Flavour-Express/services"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
           Services
         </Link>
         <Link
-          to="/contact"
+          to="/Flavour-Express/contact"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
@@ -120,7 +120,7 @@ const Header = ({ cartItems }) => {
         </Link>
 
         <Link
-          to="/signin"
+          to="/Flavour-Express/login"
           className="block py-2 px-4 mt-2 text-center bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >

@@ -16,9 +16,9 @@ const Footer = () => {
           <div className="space-y-4">
             <h3 className="text-xl font-semibold">Quick Links</h3>
             <ul className="space-y-2">
-              <li><Link to="/" className="hover:underline">Home</Link></li>
-              <li><Link to="/about" className="hover:underline">About</Link></li>
-              <li><Link to="/cart" className="hover:underline">Cart</Link></li>
+              <li><Link to="/Flavour-Express/" className="hover:underline">Home</Link></li>
+              <li><Link to="/Flavour-Express/about" className="hover:underline">About</Link></li>
+              <li><Link to="/Flavour-Express/cart" className="hover:underline">Cart</Link></li>
               <li><a href="https://piyush31508.github.io/Portfolio/" className="hover:underline">Portfolio link</a></li>
             </ul>
           </div>
