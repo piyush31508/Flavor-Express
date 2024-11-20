@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; // If you're using React Router
 import { UserData } from '../context/UserContext';
+import 'font-awesome/css/font-awesome.min.css';
 
 const Header = ({ cartItems }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -20,7 +21,7 @@ const Header = ({ cartItems }) => {
       <div className="mx-auto container px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link to="/Flavour-Express/" className="hover:text-gray-300 transition duration-300">
+          <Link to="/Flavor-Express/" className="hover:text-gray-300 transition duration-300">
             FlavourExpress
           </Link>
         </div>
@@ -28,13 +29,13 @@ const Header = ({ cartItems }) => {
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-8">
           <Link
-            to="/Flavour-Express"
+            to="/Flavor-Express"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Home
           </Link>
           <Link
-            to="/Flavour-Express/cart"
+            to="/Flavor-Express/cart"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Cart
@@ -49,7 +50,7 @@ const Header = ({ cartItems }) => {
 
           {data &&
             <Link
-              to="/Flavour-Express/dashboard"
+              to="/Flavor-Express/dashboard"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Dashboard
@@ -57,9 +58,9 @@ const Header = ({ cartItems }) => {
           }
 
 
-          { !isAuth ? (
+          {!isAuth ? (
             <Link
-              to="/Flavour-Express/login"
+              to="/Flavor-Express/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign In
@@ -67,7 +68,7 @@ const Header = ({ cartItems }) => {
           ) : (
             <Link
               onClick={handleSignOut}
-              to="/Flavour-Express/login"
+              to="/Flavor-Express/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign Out
@@ -91,41 +92,50 @@ const Header = ({ cartItems }) => {
           } md:hidden bg-gray-800 text-white px-4 py-2`}
       >
         <Link
-          to="/Flavour-Express/"
+          to="/Flavor-Express/"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
           Home
         </Link>
         <Link
-          to="/Flavour-Express/about"
+          to="/Flavor-Express/cart"
           className="block py-2 hover:text-gray-300 transition duration-300"
-          onClick={() => setIsMenuOpen(false)}
         >
-          About
+          Cart
+          {cartItems > 0 && (
+            <sup
+              className="block py-2 hover:text-gray-300 transition duration-300"
+            >
+              {cartItems}
+            </sup>
+          )}
         </Link>
-        <Link
-          to="/Flavour-Express/services"
-          className="block py-2 hover:text-gray-300 transition duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Services
-        </Link>
-        <Link
-          to="/Flavour-Express/contact"
-          className="block py-2 hover:text-gray-300 transition duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Contact
-        </Link>
+        {data &&
+          <Link
+            to="/Flavor-Express/dashboard"
+            className="block py-2 hover:text-gray-300 transition duration-300"
+          >
+            Dashboard
+          </Link>
+        }
 
-        <Link
-          to="/Flavour-Express/login"
-          className="block py-2 px-4 mt-2 text-center bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Sign In
-        </Link>
+        {!isAuth ? (
+          <Link
+            to="/Flavor-Express/login"
+            className="block py-2 hover:text-gray-300 transition duration-300"
+          >
+            Sign In
+          </Link>
+        ) : (
+          <Link
+            onClick={handleSignOut}
+            to="/Flavor-Express/login"
+            className="block py-2 hover:text-gray-300 transition duration-300"
+          >
+            Sign Out
+          </Link>
+        )}
       </div>
     </header>
   );
