@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Flavor-Express/static/css/main.032aa2b7.css",
-    "main.js": "/Flavor-Express/static/js/main.fc9af431.js",
+    "main.css": "/Flavor-Express/static/css/main.7af236b6.css",
+    "main.js": "/Flavor-Express/static/js/main.73241f8a.js",
     "static/js/453.419a5d54.chunk.js": "/Flavor-Express/static/js/453.419a5d54.chunk.js",
     "static/media/fontawesome-webfont.svg?v=4.7.0": "/Flavor-Express/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
     "static/media/fontawesome-webfont.eot": "/Flavor-Express/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
@@ -9,12 +9,12 @@
     "static/media/fontawesome-webfont.woff?v=4.7.0": "/Flavor-Express/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
     "static/media/fontawesome-webfont.woff2?v=4.7.0": "/Flavor-Express/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
     "index.html": "/Flavor-Express/index.html",
-    "main.032aa2b7.css.map": "/Flavor-Express/static/css/main.032aa2b7.css.map",
-    "main.fc9af431.js.map": "/Flavor-Express/static/js/main.fc9af431.js.map",
+    "main.7af236b6.css.map": "/Flavor-Express/static/css/main.7af236b6.css.map",
+    "main.73241f8a.js.map": "/Flavor-Express/static/js/main.73241f8a.js.map",
     "453.419a5d54.chunk.js.map": "/Flavor-Express/static/js/453.419a5d54.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.032aa2b7.css",
-    "static/js/main.fc9af431.js"
+    "static/css/main.7af236b6.css",
+    "static/js/main.73241f8a.js"
   ]
 }
