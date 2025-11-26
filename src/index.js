@@ -11,7 +11,7 @@ import { PaymentProvider } from './context/PaymentContext.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
-export const server = `https://flavor-express-backend.onrender.com/`;
+export const server = `https://flavor-express-backend.onrender.com`;
 
 
 root.render(
