@@ -10,11 +10,11 @@ const Dashboard = () => {
 
   const handleEdit = (product) => {
     setEditProductState(product);
-    navigate('/Flavor-Express/edit');
+    navigate('/edit');
   };
 
   const handleAddItem = () => {
-    navigate('/Flavor-Express/add');
+    navigate('/add');
   };
 
   const handleDelete = (product) => {

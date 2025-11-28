@@ -22,7 +22,7 @@ const Header = ({ cartItems }) => {
         {/* Logo */}
         <div className="text-xl font-bold">
           <Link to="/Flavor-Express/" className="hover:text-gray-300 transition duration-300">
-            FlavourExpress
+            Flavor Express
           </Link>
         </div>
 

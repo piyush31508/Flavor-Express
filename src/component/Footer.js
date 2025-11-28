@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {/* Logo Section */}
           <div className="flex justify-center sm:justify-start">
-            <div className="text-3xl font-semibold">FlavourExpress</div>
+            <div className="text-3xl font-semibold">Flavor Express</div>
           </div>
 
           {/* Links Section */}
