@@ -21,7 +21,7 @@ const Header = ({ cartItems }) => {
       <div className="mx-auto container px-4 py-4 flex justify-between items-center">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link to="/Flavor-Express/" className="hover:text-gray-300 transition duration-300">
+          <Link to="/" className="hover:text-gray-300 transition duration-300">
             Flavor Express
           </Link>
         </div>
@@ -29,13 +29,13 @@ const Header = ({ cartItems }) => {
         {/* Navigation Links */}
         <div className="hidden md:flex space-x-8">
           <Link
-            to="/Flavor-Express"
+            to="/"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Home
           </Link>
           <Link
-            to="/Flavor-Express/cart"
+            to="/cart"
             className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
           >
             Cart
@@ -50,7 +50,7 @@ const Header = ({ cartItems }) => {
 
           {data &&
             <Link
-              to="/Flavor-Express/dashboard"
+              to="/dashboard"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Dashboard
@@ -60,7 +60,7 @@ const Header = ({ cartItems }) => {
 
           {!isAuth ? (
             <Link
-              to="/Flavor-Express/login"
+              to="/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign In
@@ -68,7 +68,7 @@ const Header = ({ cartItems }) => {
           ) : (
             <Link
               onClick={handleSignOut}
-              to="/Flavor-Express/login"
+              to="/login"
               className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition duration-300"
             >
               Sign Out
@@ -92,14 +92,14 @@ const Header = ({ cartItems }) => {
           } md:hidden bg-gray-800 text-white px-4 py-2`}
       >
         <Link
-          to="/Flavor-Express/"
+          to="/"
           className="block py-2 hover:text-gray-300 transition duration-300"
           onClick={() => setIsMenuOpen(false)}
         >
           Home
         </Link>
         <Link
-          to="/Flavor-Express/cart"
+          to="/cart"
           className="block py-2 hover:text-gray-300 transition duration-300"
         >
           Cart
@@ -113,7 +113,7 @@ const Header = ({ cartItems }) => {
         </Link>
         {data &&
           <Link
-            to="/Flavor-Express/dashboard"
+            to="/dashboard"
             className="block py-2 hover:text-gray-300 transition duration-300"
           >
             Dashboard
@@ -122,7 +122,7 @@ const Header = ({ cartItems }) => {
 
         {!isAuth ? (
           <Link
-            to="/Flavor-Express/login"
+            to="/login"
             className="block py-2 hover:text-gray-300 transition duration-300"
           >
             Sign In
@@ -130,7 +130,7 @@ const Header = ({ cartItems }) => {
         ) : (
           <Link
             onClick={handleSignOut}
-            to="/Flavor-Express/login"
+            to="/login"
             className="block py-2 hover:text-gray-300 transition duration-300"
           >
             Sign Out

@@ -36,7 +36,7 @@ const ProductAdd = () => {
   
 
   const handleCancel = () => {
-    navigate('/Flavor-Express/dashboard');
+    navigate('/dashboard');
   };
 
   const handleSubmit = (e) => {
@@ -57,7 +57,7 @@ const ProductAdd = () => {
       images: images,
     };
     addProduct(newProduct);
-    navigate('/Flavor-Express/dashboard');
+    navigate('/dashboard');
   };
 
   return (

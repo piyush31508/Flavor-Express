@@ -56,12 +56,12 @@ const ProductEditForm = () => {
       editProduct({ ...formData, _id: editProductState._id }); 
     }
     setEditProductState(null); 
-    navigate('/Flavor-Express/dashboard');
+    navigate('/dashboard');
   };
 
   const handleCancel = () => {
     setEditProductState(null);
-    navigate('/Flavor-Express/dashboard');
+    navigate('/dashboard');
   };
 
   if (!editProductState) return null;
