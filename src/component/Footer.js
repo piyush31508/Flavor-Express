@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaGithub, FaLinkedin, FaTwitter, FaFacebook } from 'react-icons/fa';
+import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white mt-16">
       {/* Main Footer Content */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-8">
           
           {/* Brand Section */}
           <div className="space-y-3">
@@ -38,43 +38,6 @@ const Footer = () => {
                   Cart
                 </Link>
               </li>
-              <li>
-                <a href="#about" className="hover:text-orange-400 transition duration-300">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-orange-400 transition duration-300">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Support & Policies */}
-          <div className="space-y-3">
-            <h4 className="font-bold text-lg">Support</h4>
-            <ul className="space-y-2 text-gray-400">
-              <li>
-                <a href="#help" className="hover:text-orange-400 transition duration-300">
-                  Help Center
-                </a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-orange-400 transition duration-300">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#terms" className="hover:text-orange-400 transition duration-300">
-                  Terms & Conditions
-                </a>
-              </li>
-              <li>
-                <a href="#privacy" className="hover:text-orange-400 transition duration-300">
-                  Privacy Policy
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -83,27 +46,18 @@ const Footer = () => {
             <h4 className="font-bold text-lg">Connect With Us</h4>
             <div className="flex gap-4">
               <SocialLink 
-                href="https://github.com" 
+                href="https://github.com/piyush31508/" 
                 icon={FaGithub} 
                 label="GitHub"
               />
               <SocialLink 
-                href="https://linkedin.com" 
+                href="https://www.linkedin.com/in/piyushchawla-webdev/" 
                 icon={FaLinkedin} 
                 label="LinkedIn"
               />
-              <SocialLink 
-                href="https://twitter.com" 
-                icon={FaTwitter} 
-                label="Twitter"
-              />
-              <SocialLink 
-                href="https://facebook.com" 
-                icon={FaFacebook} 
-                label="Facebook"
-              />
             </div>
           </div>
+
         </div>
 
         {/* Divider */}
