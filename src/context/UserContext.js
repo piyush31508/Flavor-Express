@@ -1,3 +1,4 @@
+// src/context/UserContext.js
 import { createContext, useContext, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
@@ -8,10 +9,10 @@ const UserContext = createContext();
 export const UserProvider = ({ children }) => {
   const [btnLoading, setBtnLoading] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
-  const [data, setData] = useState(null);
-  const [loadingUser, setLoadingUser] = useState(true); // <-- NEW
+  const [data, setData] = useState(null);       // 👈 will contain isAdmin
+  const [loadingUser, setLoadingUser] = useState(true);
 
-  // ------------------------------- LOGIN -------------------------------
+  // LOGIN
   async function loginUser(email, navigate) {
     setBtnLoading(true);
     try {
@@ -26,10 +27,9 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  // ------------------------------ VERIFY ------------------------------
+  // VERIFY
   async function verifyUser(otp, navigate) {
     const verifyToken = localStorage.getItem("verifyToken");
-
     if (!verifyToken) return toast.error("No verification token found");
 
     setBtnLoading(true);
@@ -41,13 +41,12 @@ export const UserProvider = ({ children }) => {
 
       toast.success("Login Successful!");
 
-      // ❌ BEFORE: localStorage.clear(); (this deletes token after every refresh)
       localStorage.removeItem("verifyToken");
       localStorage.setItem("token", data.token);
 
       setIsAuth(true);
-
-      navigate("/dashboard");
+      setData(data.user);           // 👈 save user (with isAdmin)
+      navigate("/dashboard");       // admin will go here, non-admin will be blocked by AdminRoute
       await userDetails();
     } catch (error) {
       toast.error("Failed to Login. Please try again later.");
@@ -57,45 +56,44 @@ export const UserProvider = ({ children }) => {
     }
   }
 
-  // --------------------------- FETCH USER -----------------------------
+  // FETCH /user/me
   async function userDetails() {
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (!token) {
-    setIsAuth(false);
-    setLoadingUser(false);
-    return;
-  }
-
-  try {
-    const res = await axios.get(`${server}/user/me`, {
-      headers: {
-        Authorization: `Bearer ${token}`,  // ✅ MATCHES isAuth
-      },
-    });
-
-    setData(res.data);
-    setIsAuth(true);
-  } catch (error) {
-    console.log(error);
-
-    if (error.response?.status === 401) {
-      localStorage.removeItem("token");
+    if (!token) {
       setIsAuth(false);
+      setLoadingUser(false);
+      return;
     }
 
-    toast.error("Failed to fetch user details.");
-  } finally {
-    setLoadingUser(false);
-  }
-}
+    try {
+      const res = await axios.get(`${server}/user/me`, {
+        headers: {
+          Authorization: `Bearer ${token}`, // 👈 matches backend isAuth
+        },
+      });
 
-  // run ONCE when app loads
+      setData(res.data);  // includes isAdmin
+      setIsAuth(true);
+    } catch (error) {
+      console.log(error);
+
+      if (error.response?.status === 401) {
+        localStorage.removeItem("token");
+        setIsAuth(false);
+      }
+
+      toast.error("Failed to fetch user details.");
+    } finally {
+      setLoadingUser(false);
+    }
+  }
+
   useEffect(() => {
     userDetails();
   }, []);
 
-  // ------------------------------ LOGOUT ------------------------------
+  // LOGOUT
   function logOut() {
     localStorage.removeItem("token");
     setIsAuth(false);

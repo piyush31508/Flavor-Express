@@ -1,3 +1,4 @@
+// src/component/Header.jsx
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ShoppingCart, LogOut } from 'lucide-react';
@@ -12,18 +13,12 @@ const Header = ({ cartItems = 0 }) => {
     setIsMenuOpen(false);
   };
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
 
   return (
     <header className="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white shadow-2xl sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-        
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition">
           <div className="text-3xl">🍽️</div>
@@ -35,7 +30,7 @@ const Header = ({ cartItems = 0 }) => {
         {/* Desktop Navigation */}
         <nav className="hidden md:flex space-x-2 items-center">
           <NavLink to="/">Home</NavLink>
-          
+
           <NavLink to="/cart" className="relative">
             <div className="flex items-center gap-2">
               <ShoppingCart size={20} />
@@ -48,10 +43,14 @@ const Header = ({ cartItems = 0 }) => {
             </div>
           </NavLink>
 
-          {data && <NavLink to="/dashboard">Dashboard</NavLink>}
+          {/* 👇 Dashboard only visible if user is admin */}
+          {data?.isAdmin && <NavLink to="/dashboard">Dashboard</NavLink>}
 
           {!isAuth ? (
-            <NavLink to="/login" className="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 rounded-lg hover:shadow-lg">
+            <NavLink
+              to="/login"
+              className="bg-gradient-to-r from-orange-500 to-red-500 px-4 py-2 rounded-lg hover:shadow-lg"
+            >
               Sign In
             </NavLink>
           ) : (
@@ -79,7 +78,7 @@ const Header = ({ cartItems = 0 }) => {
       {isMenuOpen && (
         <div className="md:hidden bg-slate-800 border-t border-slate-700 px-4 py-3 space-y-2 animate-fadeIn">
           <MobileNavLink to="/" onClick={closeMenu}>Home</MobileNavLink>
-          
+
           <MobileNavLink to="/cart" onClick={closeMenu}>
             <div className="flex items-center justify-between">
               <span>Cart</span>
@@ -91,10 +90,17 @@ const Header = ({ cartItems = 0 }) => {
             </div>
           </MobileNavLink>
 
-          {data && <MobileNavLink to="/dashboard" onClick={closeMenu}>Dashboard</MobileNavLink>}
+          {/* 👇 Dashboard link mobile - only admin */}
+          {data?.isAdmin && (
+            <MobileNavLink to="/dashboard" onClick={closeMenu}>
+              Dashboard
+            </MobileNavLink>
+          )}
 
           {!isAuth ? (
-            <MobileNavLink to="/login" onClick={closeMenu}>Sign In</MobileNavLink>
+            <MobileNavLink to="/login" onClick={closeMenu}>
+              Sign In
+            </MobileNavLink>
           ) : (
             <button
               onClick={handleSignOut}

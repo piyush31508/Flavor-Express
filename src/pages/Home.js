@@ -35,23 +35,22 @@ const Home = ({ addToCart }) => {
     addToCart(product, quantity);
   };
 
-  // search submit
   const handleSearchSubmit = (e) => {
     e.preventDefault();
     setCurrentPage(1);
-    searchProducts(searchTerm, 1); // calls /product/search or /product/all if empty
+    searchProducts(searchTerm, 1);
   };
 
   const handleClearSearch = () => {
     setSearchTerm('');
     setCurrentPage(1);
-    searchProducts('', 1); // fallback to normal listing
+    searchProducts('', 1);
   };
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       setCurrentPage(page);
-      pagination(page); // ProductContext decides whether to hit /all or /search
+      pagination(page);
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
@@ -69,8 +68,7 @@ const Home = ({ addToCart }) => {
               🍽️ Welcome to Flavor Express
             </h1>
             <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-              Discover the most delicious meals from your favorite restaurants,
-              delivered fresh to your door.
+              Discover the most delicious meals from your favorite restaurants, delivered fresh to your door.
             </p>
           </div>
         </div>
@@ -81,9 +79,7 @@ const Home = ({ addToCart }) => {
         {/* Section Header + Search */}
         <div className="mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
           <div>
-            <h2 className="text-4xl font-bold text-gray-800 mb-2">
-              Featured Dishes
-            </h2>
+            <h2 className="text-4xl font-bold text-gray-800 mb-2">Featured Dishes</h2>
             <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-red-500 rounded"></div>
             <p className="text-gray-600 mt-3">
               {searchQuery
@@ -98,10 +94,7 @@ const Home = ({ addToCart }) => {
             className="flex items-center gap-2 w-full md:w-96"
           >
             <div className="relative flex-1">
-              <Search
-                className="absolute left-3 top-2.5 text-gray-400"
-                size={18}
-              />
+              <Search className="absolute left-3 top-2.5 text-gray-400" size={18} />
               <input
                 type="text"
                 value={searchTerm}
@@ -147,7 +140,6 @@ const Home = ({ addToCart }) => {
             {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-3 flex-wrap py-8">
-                {/* Previous */}
                 <button
                   onClick={handlePreviousPage}
                   disabled={currentPage === 1}
@@ -156,26 +148,22 @@ const Home = ({ addToCart }) => {
                   <ChevronLeft size={18} /> Previous
                 </button>
 
-                {/* Page Numbers */}
                 <div className="flex gap-2 flex-wrap justify-center">
-                  {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                    (page) => (
-                      <button
-                        key={page}
-                        onClick={() => handlePageChange(page)}
-                        className={`px-4 py-2 rounded-lg font-semibold transition duration-300 ${
-                          currentPage === page
-                            ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
-                            : 'bg-white text-gray-700 border-2 border-gray-300 hover:border-orange-500 hover:text-orange-600'
-                        }`}
-                      >
-                        {page}
-                      </button>
-                    ),
-                  )}
+                  {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                    <button
+                      key={page}
+                      onClick={() => handlePageChange(page)}
+                      className={`px-4 py-2 rounded-lg font-semibold transition duration-300 ${
+                        currentPage === page
+                          ? 'bg-gradient-to-r from-orange-500 to-red-500 text-white shadow-lg'
+                          : 'bg-white text-gray-700 border-2 border-gray-300 hover:border-orange-500 hover:text-orange-600'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  ))}
                 </div>
 
-                {/* Next */}
                 <button
                   onClick={handleNextPage}
                   disabled={currentPage === totalPages}
@@ -186,17 +174,11 @@ const Home = ({ addToCart }) => {
               </div>
             )}
 
-            {/* Page Info */}
             <div className="text-center text-gray-600 mt-6">
               <p className="text-sm">
                 Showing page{' '}
-                <span className="font-bold text-orange-600">
-                  {currentPage}
-                </span>{' '}
-                of{' '}
-                <span className="font-bold text-orange-600">
-                  {totalPages}
-                </span>
+                <span className="font-bold text-orange-600">{currentPage}</span> of{' '}
+                <span className="font-bold text-orange-600">{totalPages}</span>
               </p>
             </div>
           </>

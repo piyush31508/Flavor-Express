@@ -12,16 +12,16 @@ export const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [total, setTotal] = useState(0);
-  const [searchQuery, setSearchQuery] = useState(""); // 🔍 current search
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // --------- BASE FETCH (no search) ----------
+  // fetch all products (no search)
   async function fetchProduct(page = 1) {
     setLoading(true);
     try {
-      const response = await axios.get(`${server}/product/all?page=${page}`);
-      setProducts(response.data.products);
-      setTotal(response.data.totalProducts);
-      setSearchQuery(""); // clear any active search
+      const res = await axios.get(`${server}/product/all?page=${page}`);
+      setProducts(res.data.products);
+      setTotal(res.data.totalProducts);
+      setSearchQuery("");
     } catch (error) {
       toast.error("Failed to fetch products");
       console.error(error);
@@ -30,11 +30,10 @@ export const ProductProvider = ({ children }) => {
     }
   }
 
-  // --------- SEARCH PRODUCTS ----------
+  // search products
   async function searchProducts(query, page = 1) {
     const trimmed = query.trim();
 
-    // if empty query → fallback to normal list
     if (!trimmed) {
       await fetchProduct(page);
       return;
@@ -46,7 +45,7 @@ export const ProductProvider = ({ children }) => {
         `${server}/product/search?q=${encodeURIComponent(trimmed)}&page=${page}`
       );
       setProducts(res.data.products);
-      setTotal(res.data.total); // backend sends "total"
+      setTotal(res.data.total);
       setSearchQuery(trimmed);
     } catch (error) {
       toast.error("Failed to search products");
@@ -56,13 +55,12 @@ export const ProductProvider = ({ children }) => {
     }
   }
 
-  // --------- PAGINATION (works for both modes) ----------
+  // pagination (works for both list & search)
   async function pagination(page) {
     setLoading(true);
     try {
       let res;
       if (searchQuery) {
-        // if currently in search mode
         res = await axios.get(
           `${server}/product/search?q=${encodeURIComponent(
             searchQuery
@@ -71,7 +69,6 @@ export const ProductProvider = ({ children }) => {
         setProducts(res.data.products);
         setTotal(res.data.total);
       } else {
-        // normal listing
         res = await axios.get(`${server}/product/all?page=${page}`);
         setProducts(res.data.products);
         setTotal(res.data.totalProducts);
@@ -84,7 +81,6 @@ export const ProductProvider = ({ children }) => {
     }
   }
 
-  // --------- CRUD (unchanged) ----------
   async function addProduct(product) {
     try {
       await axios.post(`${server}/product/create`, {
@@ -96,7 +92,7 @@ export const ProductProvider = ({ children }) => {
         images: product.images,
       });
       toast.success("Product added successfully");
-      fetchProduct(); // reload list
+      fetchProduct();
     } catch (error) {
       toast.error("Failed to add product");
       console.error(error);
@@ -115,10 +111,7 @@ export const ProductProvider = ({ children }) => {
       if (product.thumbnail) updatedProductData.thumbnail = product.thumbnail;
       if (product.images) updatedProductData.images = product.images;
 
-      await axios.put(
-        `${server}/product/${product._id}`,
-        updatedProductData
-      );
+      await axios.put(`${server}/product/${product._id}`, updatedProductData);
       toast.success("Product updated successfully");
       fetchProduct();
     } catch (error) {
@@ -154,8 +147,8 @@ export const ProductProvider = ({ children }) => {
         setEditProductState,
         addProduct,
         deleteProduct,
-        searchProducts,   // 👈 expose
-        searchQuery,      // optional for UI
+        searchProducts,
+        searchQuery,
       }}
     >
       {children}
